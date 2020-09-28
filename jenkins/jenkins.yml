@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  jenkins-master:
+    image: vineethmaller/jenkins:1.1.0
+    ports:
+      - 8080:8080
+      - 50000:50000
+    secrets:
+      - jenkins-user
+      - jenkins-pass
+    volumes:
+      - "/var/projects/docker/volumes/jenkins:/var/jenkins_home"
+      - "/var/log/jenkins/master/:/var/log/jenkins/"
+
+secrets:
+  jenkins-user:
+    external: true
+  jenkins-pass:
+    external: true
